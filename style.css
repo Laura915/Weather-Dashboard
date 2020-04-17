@@ -1,0 +1,35 @@
+/*jumbotron styling*/
+.jumbotron{
+    color: white;
+    height: 175px;
+    text-align: center;
+};
+/*Current Day bov*/
+.current-box{
+    display: block;
+}
+/*UV Index colors*/
+.uv-low-index{
+     background-color: green;
+}
+.uv-mod-index{
+    background-color: yellow;
+}
+.uv-high-index{
+    background-color: orange;
+}
+.uv-very-high-index{
+     background-color: red;
+}
+.uv-extreme-index{
+    background-color: magenta;
+}
+.uv-box{
+    height: 25px;
+    width: 40px;
+    text-align: center;
+}
+/*Forecast box*/
+.forecast-box{
+    display: inline;
+}

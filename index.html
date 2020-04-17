@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--Bootstrap-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <!--My style css-->
+    <link rel="stylesheet" href="style.css">
+    <title>Weather</title>
+</head>
+
+<body>
+    <header>
+        <!--jumbotron-->
+        <div class="jumbotron jumbotron-fluid bg-dark">
+            <div class="container">
+                <h1 class="display-4">Weather Dashboard </h1>
+            </div>
+        </div>
+    </header>
+    <main>
+        <div class="container">
+
+
+            <!--row 1-->
+            <div class="row">
+                <!--search Input-->
+                <div class="input-group col-lg-4">
+                    <!--Search Input-->
+                    <input id="city-input" class="form-control" type="text" placeholder="City"
+                        aria-describedby="button-addon2">
+                    <!--search btn-->
+                    <div class="input-group-append">
+                        <button class="btn btn-outline-secondary" type="button" id="button-addon2"> Submit </button>
+                    </div>
+                    <!--Heres where last searched city should append to-->
+                </div>
+
+                <!--div that holds current day row 1, col 2 col-lg-8 hide until city input-->
+                <div class="col-lg-8">
+                    <!--div that holds the current day-->
+                    <div id="current-day-box" class="current-box" style="background-color: khaki;"></div>
+                    <!--div that holds forcast row hide until city input-->
+                    <!--5 div boxes -->
+                    <div class="forecast-box-holder" ></div>
+                </div>
+
+            </div>
+
+        </div>
+    </main>
+    <!--jQuery-->
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <!--Moment.js-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+    <!--JavaScript-->
+    <script src="main.js"></script>
+
+</body>
+
+</html>
