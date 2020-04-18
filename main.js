@@ -94,8 +94,7 @@ function currentWeatherDisplay(cityName, weatherIconURLCurrentDay, tempCurrentDa
     };
 };
 
-function forecastDaily(response02) {
-    
+function forecastDaily(response02) { 
     //for loop to loop through daily
     for (var i = 1; i < 6; i++) {
         //date
@@ -103,21 +102,20 @@ function forecastDaily(response02) {
         var dateForecastP = $("<p>").text(dateForecast);
         //icon
         var iconUrlForecast="http://openweathermap.org/img/wn/" + response02.daily[i].weather[0].icon + "@2x.png";
-        var iconImgForescast=$("<img>").attr("src", iconUrlForecast);
+        var iconForescastImg=$("<img>").attr("src", iconUrlForecast);
         //temp
         var tempForecast=(((response02.daily[i].temp.day)- 273.15) * 1.80 + 32).toString().slice(0, 4);
-        var tempP=$("<p>").text("Temperature: " + tempForecast + " °F");
+        var tempP=$("<p>").text("Temp: " + tempForecast + " °F");
         //humidity
         var humidityForecast=response02.daily[i].humidity;
-        var humidityForecastP=$("<p>").text("Temperature: "+humidityForecast+ "%");
+        var humidityForecastP=$("<p>").text("Humidity: "+humidityForecast+ "%");
         
-        //div dump, Not displaying
+        //Append El
         var forecastHolderDiv = $("#forecast-box-holder");
-        var DailyDiv = $("<div class='forecast-box'>");
-        DailyDiv.append(dateForecastP);
-        DailyDiv.append(iconImgForescast);
-        forecastHolderDiv.append(DailyDiv);
-    };
+        var dailyDiv = $("<div class='forecast-box' >");
+        dailyDiv.append(dateForecastP,iconForescastImg,tempP,humidityForecastP);
+       forecastHolderDiv.append(dailyDiv);
+    }; 
 };
 
 function clearPreviousResponse(){

@@ -31,5 +31,7 @@
 }
 /*Forecast box*/
 .forecast-box{
-    display: inline;
+    background-color: blue ;
+    color: white;
+    display: inline-block;
 }
