@@ -51,11 +51,12 @@ function getCoord(lon, lat) {
 
 function currentWeatherDisplay(cityName, weatherIconURLCurrentDay, tempCurrentDay, humidityCurrentDay, windSpeedCurrentDay, uvIndexCurrentDay) {
     // CityName 
-    cityName = $("<p>").text(cityName);
+    cityName = $("<p class='title-inline'>").text(cityName);
     //date
-    var currentDate = $("<p>").text((moment().format('l')));
+    var currentDate = $("<p class='title-inline'>").text((moment().format('l')));
     //weather icon
-    var weatherIconCurrentDay = $("<img>").attr("src", weatherIconURLCurrentDay);
+    var weatherIconCurrentDay = $("<img class='title-inline'>").attr("src", weatherIconURLCurrentDay);
+    weatherIconCurrentDay.css("height","50px")
     //Temp
     temp = $("<p>").text("Temperature: " + tempCurrentDay + " °F");
     //humidity
@@ -64,11 +65,7 @@ function currentWeatherDisplay(cityName, weatherIconURLCurrentDay, tempCurrentDa
     windSpeed = $("<p>").text("Wind Spped: " + windSpeedCurrentDay + " MPH");
     //append items
     var currentDayDiv = $("#current-day-box");
-    currentDayDiv.append(cityName);
-    currentDayDiv.append(currentDate);
-    currentDayDiv.append(weatherIconCurrentDay);
-    currentDayDiv.append(temp);
-    currentDayDiv.append(windSpeed);
+    currentDayDiv.append(cityName,currentDate,weatherIconCurrentDay,temp,humidity,windSpeed);
 
     //UV Index function
     uvIndexSetColor(uvIndexCurrentDay);
@@ -81,11 +78,11 @@ function currentWeatherDisplay(cityName, weatherIconURLCurrentDay, tempCurrentDa
 
         } else if (uvIndexCurrentDay >= 6 && uvIndexCurrentDay < 8) {
             //High 
-            var uvIndexDiv = $("<div class='uv-high-index uv-box'>").text(uvIndexCurrentDay);
-            var uvIndexP = $("<p>").text("UV Index: ");
+            var uvIndexDiv = $("<div class='uv-box uv-inline '>").text(uvIndexCurrentDay);
+            uvIndexDiv.css("background-color","orange");
+            var uvIndexP = $("<p class='uv-inline'>").text("UV Index: ");
             //append
-            currentDayDiv.append(uvIndexP);
-            currentDayDiv.append(uvIndexDiv);
+            currentDayDiv.append(uvIndexP,uvIndexDiv);
         } else if (uvIndexCurrentDay >= 8 && uvIndexCurrentDay < 11) {
             //very high
         } else {
