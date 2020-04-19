@@ -2,8 +2,10 @@
 $("#button-addon2").on("click", function (event) {
     event.preventDefault();
 
-    clearPreviousResponse();
+    renderSearchedCities();
     
+    clearPreviousResponse();
+
     //when submit btn clicked, grab city value 
     var cityName = $("#city-input").val();
     var firstQueryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&appid=7cc39e7154aa87bb1a0a379166176004";
@@ -56,7 +58,7 @@ function currentWeatherDisplay(cityName, weatherIconURLCurrentDay, tempCurrentDa
     var currentDate = $("<p class='title-inline'>").text((moment().format('l')));
     //weather icon
     var weatherIconCurrentDay = $("<img class='title-inline'>").attr("src", weatherIconURLCurrentDay);
-    weatherIconCurrentDay.css("height","50px")
+    weatherIconCurrentDay.css("height", "50px")
     //Temp
     temp = $("<p>").text("Temperature: " + tempCurrentDay + " °F");
     //humidity
@@ -65,56 +67,67 @@ function currentWeatherDisplay(cityName, weatherIconURLCurrentDay, tempCurrentDa
     windSpeed = $("<p>").text("Wind Spped: " + windSpeedCurrentDay + " MPH");
     //append items
     var currentDayDiv = $("#current-day-box");
-    currentDayDiv.append(cityName,currentDate,weatherIconCurrentDay,temp,humidity,windSpeed);
+    currentDayDiv.append(cityName, currentDate, weatherIconCurrentDay, temp, humidity, windSpeed);
 
     //UV Index function
     uvIndexSetColor(uvIndexCurrentDay);
     function uvIndexSetColor(uvIndexCurrentDay) {
-        if (uvIndexCurrentDay >= 1 && uvIndexCurrentDay < 3) {
-            //low
-
-        } else if (uvIndexCurrentDay >= 3 && uvIndexCurrentDay < 6) {
-            //mod
-
-        } else if (uvIndexCurrentDay >= 6 && uvIndexCurrentDay < 8) {
-            //High 
+        if (uvIndexCurrentDay > 0 && uvIndexCurrentDay < 5) {
+            //favorable
             var uvIndexDiv = $("<div class='uv-box uv-inline '>").text(uvIndexCurrentDay);
-            uvIndexDiv.css("background-color","orange");
+            uvIndexDiv.css("background-color", "green");
+            var uvIndexP = $("<p class='uv-inline'>").text("UV Index: ");
+            //append
+            currentDayDiv.append(uvIndexP, uvIndexDiv);
+        } else if (uvIndexCurrentDay >= 5 && uvIndexCurrentDay < 7) {
+            //mod
+            var uvIndexDiv = $("<div class='uv-box uv-inline '>").text(uvIndexCurrentDay);
+            uvIndexDiv.css("background-color","yellow");
             var uvIndexP = $("<p class='uv-inline'>").text("UV Index: ");
             //append
             currentDayDiv.append(uvIndexP,uvIndexDiv);
-        } else if (uvIndexCurrentDay >= 8 && uvIndexCurrentDay < 11) {
-            //very high
         } else {
-            //extreme 
-        };
+            //High 
+            var uvIndexDiv = $("<div class='uv-box uv-inline '>").text(uvIndexCurrentDay);
+            uvIndexDiv.css("background-color", "red");
+            var uvIndexP = $("<p class='uv-inline'>").text("UV Index: ");
+            //append
+            currentDayDiv.append(uvIndexP, uvIndexDiv);
+        }; 
     };
 };
 
-function forecastDaily(response02) { 
+function forecastDaily(response02) {
+    var forecastHolderDiv = $("#forecast-box-holder");
+    var dailyForecastTitle=$("<p>").text("5-Day Forecast");
+    dailyForecastTitle.css("font-weight","bold");
+    forecastHolderDiv.append(dailyForecastTitle);
     //for loop to loop through daily
     for (var i = 1; i < 6; i++) {
         //date
         var dateForecast = moment().add(i, 'days').format('l');
         var dateForecastP = $("<p>").text(dateForecast);
         //icon
-        var iconUrlForecast="http://openweathermap.org/img/wn/" + response02.daily[i].weather[0].icon + "@2x.png";
-        var iconForescastImg=$("<img>").attr("src", iconUrlForecast);
+        var iconUrlForecast = "http://openweathermap.org/img/wn/" + response02.daily[i].weather[0].icon + "@2x.png";
+        var iconForescastImg = $("<img>").attr("src", iconUrlForecast);
         //temp
-        var tempForecast=(((response02.daily[i].temp.day)- 273.15) * 1.80 + 32).toString().slice(0, 4);
-        var tempP=$("<p>").text("Temp: " + tempForecast + " °F");
+        var tempForecast = (((response02.daily[i].temp.day) - 273.15) * 1.80 + 32).toString().slice(0, 4);
+        var tempP = $("<p>").text("Temp: " + tempForecast + " °F");
         //humidity
-        var humidityForecast=response02.daily[i].humidity;
-        var humidityForecastP=$("<p>").text("Humidity: "+humidityForecast+ "%");
-        
+        var humidityForecast = response02.daily[i].humidity;
+        var humidityForecastP = $("<p>").text("Humidity: " + humidityForecast + "%");
+
         //Append El
-        var forecastHolderDiv = $("#forecast-box-holder");
         var dailyDiv = $("<div class='forecast-box' >");
-        dailyDiv.append(dateForecastP,iconForescastImg,tempP,humidityForecastP);
-       forecastHolderDiv.append(dailyDiv);
-    }; 
+        dailyDiv.append(dateForecastP, iconForescastImg, tempP, humidityForecastP);
+        forecastHolderDiv.append(dailyDiv);
+    };
 };
 
-function clearPreviousResponse(){
-$("#current-day-box").empty();
-}
+function clearPreviousResponse() {
+    $("#current-day-box").empty();
+    $("#forecast-box-holder").empty();
+};
+function renderSearchedCities(){
+var 
+};
