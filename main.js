@@ -2,7 +2,7 @@
 $("#button-addon2").on("click", function (event) {
     event.preventDefault();
 
-    renderSearchedCities();
+    //renderSearchedCities();
     
     clearPreviousResponse();
 
@@ -128,6 +128,6 @@ function clearPreviousResponse() {
     $("#current-day-box").empty();
     $("#forecast-box-holder").empty();
 };
-function renderSearchedCities(){
-var 
-};
+// function renderSearchedCities(){
+// var 
+// };
