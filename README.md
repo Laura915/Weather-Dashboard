@@ -1,4 +1,4 @@
-# Weather Dashboard
+# Homework6
 Weather Application
 
 When a city is searched 

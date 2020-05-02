@@ -4,6 +4,15 @@
     height: 175px;
     text-align: center;
 };
+/*search content stlying*/
+.btn-style{
+    height: 40px;
+}
+/* .search{
+    display: flex;
+    flex-direction: column;
+} */
+
 /*Current Day box */
 .current-box{
     display: block;
