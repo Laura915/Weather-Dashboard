@@ -5,13 +5,9 @@
     text-align: center;
 };
 /*search content stlying*/
-.btn-style{
-    height: 40px;
+.search-city-li{
+    list-style: none;
 }
-/* .search{
-    display: flex;
-    flex-direction: column;
-} */
 
 /*Current Day box */
 .current-box{

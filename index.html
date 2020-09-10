@@ -27,27 +27,31 @@
             <!--row 1-->
             <div class="row">
                 <!--search Input-->
-                <div class="input-group col-lg-4 ">
-                    <!--Search Input-->
-                    <input id="city-input" class="form-control" type="text" placeholder="City"
-                        aria-describedby="button-addon2">
-                    <!--search btn-->
-                    <div class="input-group-append">
-                        <button class="btn btn-outline-secondary btn-style " type="button" id="button-addon2"> Submit </button>
-                    </div>
+                <div class=" col-lg-4 ">
+                    <form class="form-inline">
+                        <div class="form-group">
+                            <!--Search Input-->
+                            <input id="city-input" class="form-control" type="text" placeholder="City"
+                                aria-describedby="button-addon2">
+                        </div>
+                        <!--search btn-->
+                        <button class="btn btn-secondary" type="button" id="button-addon2"> Submit
+                        </button>
+                    </form>
+
                     <!--Heres where last searched city should append to-->
                     <div class="history">
-                       <li class="search-city-li">Durham</li>
+                        <li class="search-city-li"></li>
                     </div>
                 </div>
 
                 <!--div that holds current day row 1, col 2 col-lg-8 hide until city input-->
                 <div class="col-lg-8">
                     <!--div that holds the current day-->
-                    <div id="current-day-box" class="current-box" ></div>
+                    <div id="current-day-box" class="current-box"></div>
                     <!--div that holds forcast row hide until city input-->
                     <!--5 div boxes -->
-                    <div id="forecast-box-holder" ></div>
+                    <div id="forecast-box-holder"></div>
                 </div>
 
             </div>
